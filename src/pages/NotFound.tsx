@@ -10,12 +10,18 @@ const NotFound = () => {
   }, [location.pathname])
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Return to Home
+    <div className="min-h-[60vh] flex items-center justify-center bg-background px-4 py-20">
+      <div className="text-center max-w-md">
+        <h1 className="text-6xl font-serif font-bold text-primary mb-4">404</h1>
+        <p className="text-xl text-foreground font-serif mb-2">Página não encontrada</p>
+        <p className="text-sm text-muted-foreground mb-8">
+          O conteúdo que você procura não está disponível ou foi movido.
+        </p>
+        <a
+          href="/"
+          className="inline-flex items-center px-6 py-2.5 bg-primary text-black font-semibold text-sm rounded hover:bg-primary/90 transition-colors"
+        >
+          Voltar ao Início
         </a>
       </div>
     </div>

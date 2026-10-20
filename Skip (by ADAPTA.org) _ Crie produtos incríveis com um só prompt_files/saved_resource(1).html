@@ -1,0 +1,94 @@
+<!-- saved from url=(0048)https://api.sunset.systems/services/?type=tunnel -->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Cross Domain Data Tunnel</title>
+    <meta id="bbafmabaelnnkondpfpjmdklbmfnbmol" />
+  </head>
+  <body>
+    <script type="text/javascript">
+      /*
+       * Legacy Cross-Domain Data Tunnel
+       *
+       * This endpoint provides cross-domain communication for legacy
+       * applications using the browser's postMessage API.
+       *
+       * It does not process, collect, intercept, or transmit payment
+       * information of any kind.
+       *
+       * Modernized:
+       * - Removed the legacy Base64 (atob/btoa) polyfill that was originally
+       *   included for compatibility with browsers from more than 10 years ago.
+       * - Uses only the browser's native APIs.
+       * - Script kept intentionally readable for security auditing.
+       */
+      function createCookie(c, b, a) {
+        localStorage.setItem(c, b)
+        var d = new Date()
+        d.setTime(d.getTime() + 864e5 * a)
+        a = d.toUTCString()
+        document.cookie = c + '=' + b + ';expires=' + a + ';path=/;SameSite=None;Secure'
+      }
+
+      function readCookie(c) {
+        for (
+          var b = '', a = c + '=', d = document.cookie.split(';'), f = d.length, e = 0;
+          e < f;
+          e++
+        )
+          if (((c = d[e].trim()), 0 == c.indexOf(a))) {
+            b = c.substring(a.length, c.length)
+            break
+          }
+        return b
+      }
+
+      function deleteCookie(c) {
+        document.cookie = c + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/'
+      }
+      var xe_dataTunnel_Svr = {
+        listenner: function (c) {
+          var b = {
+              action: '',
+              data: 'null',
+              id: '',
+            },
+            a = ''
+          try {
+            a = window.atob(c.data)
+          } catch (d) {
+            return !1
+          }
+          a = 'string' === typeof a && '' != a && '{' == a[0] ? a : !1
+          !1 !== a && (b = JSON.parse(a))
+          switch (b.action) {
+            case 'del_cookie':
+              deleteCookie(String(b.data))
+              b.action = 'callback'
+              b.data = !0
+              break
+            case 'get_cookie':
+              b.action = 'set_cookie'
+              b.data = readCookie(String(b.data))
+              '' == b.data || 3 > b.data.length
+                ? ((b.action = 'callback'), (b.data = !1))
+                : (b.data = window.atob(b.data))
+              break
+            case 'set_cookie':
+              ;((a = String(b.data)),
+                '' != a &&
+                  -1 < a.indexOf('|') &&
+                  ((a = a.split('|')),
+                  3 == a.length &&
+                    (createCookie(String(a[0]), String(window.btoa(b.data)), parseInt(a[2])),
+                    (b.data = !0))),
+                (b.action = 'callback'))
+          }
+          c.source.postMessage(JSON.stringify(b), c.origin)
+        },
+      }
+      window.addEventListener('message', xe_dataTunnel_Svr.listenner, !1)
+    </script>
+    Ready
+  </body>
+</html>

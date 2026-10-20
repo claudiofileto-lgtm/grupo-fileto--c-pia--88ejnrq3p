@@ -1,12 +1,30 @@
-/* Home Page - Replace this page layout, components, content, behavior with what you want and translate to the language of the user */
-const Index = () => {
+import { Hero } from '@/components/sections/Hero'
+import { About } from '@/components/sections/About'
+import { PracticeAreas } from '@/components/sections/PracticeAreas'
+import { Team } from '@/components/sections/Team'
+import { Contact } from '@/components/sections/Contact'
+import { useEffect } from 'react'
+
+export default function Index() {
+  useEffect(() => {
+    // Handle scroll if navigating back with a hash
+    const hash = window.location.hash
+    if (hash) {
+      setTimeout(() => {
+        document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }, [])
+
   return (
-    <div className="container mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold mb-6">
-        This is a example page ready to be rewritten with your own content
-      </h1>
+    <div className="bg-background">
+      <Hero />
+      <About />
+      <PracticeAreas />
+      <Team />
+      <Contact />
     </div>
   )
 }
-
-export default Index

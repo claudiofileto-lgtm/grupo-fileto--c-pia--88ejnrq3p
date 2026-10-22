@@ -45,9 +45,13 @@ export default function TeamDetail() {
         <FadeIn>
           <Link
             to="/#lideranca"
-            className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors mb-10 group"
+            aria-label="Voltar para a seção Liderança e CEO Sócio Fundador na página inicial"
+            className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-colors mb-10 group focus-visible:ring-2 focus-visible:ring-primary rounded p-1"
           >
-            <ArrowLeft className="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft
+              className="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform"
+              aria-hidden="true"
+            />
             Voltar para Liderança & CEO - Sócio Fundador
           </Link>
         </FadeIn>
@@ -126,24 +130,26 @@ export default function TeamDetail() {
                 <div className="flex flex-wrap gap-3 mb-8 pb-6 border-b border-border/80">
                   <a
                     href={`mailto:${member.email}`}
-                    className="flex items-center gap-2 text-foreground/90 hover:text-primary transition-colors px-4 py-2 bg-card border border-border rounded-lg text-xs sm:text-sm"
+                    aria-label={`Enviar e-mail para ${member.name} (${member.email})`}
+                    className="flex items-center gap-2 text-foreground/90 hover:text-primary transition-colors px-4 py-2 bg-card border border-border rounded-lg text-xs sm:text-sm focus-visible:ring-2 focus-visible:ring-primary"
                   >
-                    <Mail className="w-4 h-4 text-primary" /> {member.email}
+                    <Mail className="w-4 h-4 text-primary" aria-hidden="true" /> {member.email}
                   </a>
                   {member.phone && (
                     <a
                       href={`tel:${member.phone.replace(/\D/g, '')}`}
-                      className="flex items-center gap-2 text-foreground/90 hover:text-primary transition-colors px-4 py-2 bg-card border border-border rounded-lg text-xs sm:text-sm"
+                      aria-label={`Ligar para ${member.phone}`}
+                      className="flex items-center gap-2 text-foreground/90 hover:text-primary transition-colors px-4 py-2 bg-card border border-border rounded-lg text-xs sm:text-sm focus-visible:ring-2 focus-visible:ring-primary"
                     >
-                      <Phone className="w-4 h-4 text-primary" /> {member.phone}
+                      <Phone className="w-4 h-4 text-primary" aria-hidden="true" /> {member.phone}
                     </a>
                   )}
                   <a
                     href="/#contato"
-                    className="flex items-center gap-1.5 px-4 py-2 bg-primary text-black font-semibold rounded-lg text-xs sm:text-sm hover:bg-primary/90 transition-colors ml-auto"
+                    className="flex items-center gap-1.5 px-4 py-2 bg-primary text-black font-semibold rounded-lg text-xs sm:text-sm hover:bg-primary/90 transition-colors ml-auto focus-visible:ring-2 focus-visible:ring-primary"
                   >
                     Solicitar Reunião
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
                   </a>
                 </div>
 
@@ -203,22 +209,25 @@ export default function TeamDetail() {
                 {/* Specialties / Expertise */}
                 <div>
                   <div className="flex items-center gap-2 mb-3">
-                    <ShieldCheck className="w-4 h-4 text-primary" />
-                    <h3 className="font-serif text-xl text-foreground font-semibold">
+                    <ShieldCheck className="w-4 h-4 text-primary" aria-hidden="true" />
+                    <h2 className="font-serif text-xl text-foreground font-semibold">
                       Áreas de Especialidade
-                    </h3>
+                    </h2>
                   </div>
-                  <div className="flex flex-wrap gap-2">
+                  <ul className="flex flex-wrap gap-2 list-none p-0" aria-label="Especialidades">
                     {member.expertise.map((exp, i) => (
-                      <span
+                      <li
                         key={i}
                         className="inline-flex items-center px-3.5 py-1.5 border border-primary/30 text-foreground bg-primary/10 text-xs sm:text-sm font-medium rounded-md"
                       >
-                        <CheckCircle2 className="w-3.5 h-3.5 text-primary mr-1.5 shrink-0" />
+                        <CheckCircle2
+                          className="w-3.5 h-3.5 text-primary mr-1.5 shrink-0"
+                          aria-hidden="true"
+                        />
                         {exp}
-                      </span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               </FadeIn>
             </div>

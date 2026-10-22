@@ -23,7 +23,7 @@
     --secondary-foreground: 0 0% 98%;
 
     --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
+    --muted-foreground: 0 0% 72%;
 
     --accent: 40 47% 56%;
     --accent-foreground: 0 0% 100%;
@@ -44,6 +44,23 @@
 
   body {
     @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-white;
+  }
+
+  /* Estilos de foco visível consistentes e de alto contraste em toda a aplicação */
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [role='button']:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
   }
 
   h1,
@@ -67,6 +84,32 @@
 @layer utilities {
   .text-glow {
     text-shadow: 0 0 10px rgba(197, 161, 89, 0.5);
+  }
+
+  /* Skip link acessível: oculto visualmente até receber foco via teclado */
+  .skip-link {
+    position: absolute;
+    top: -9999px;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.75rem 1.25rem;
+    background-color: hsl(var(--primary));
+    color: #000;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    box-shadow:
+      0 10px 25px -5px rgba(0, 0, 0, 0.8),
+      0 0 0 2px #fff;
+    transition: top 0.2s ease-in-out;
+  }
+
+  .skip-link:focus,
+  .skip-link:focus-visible {
+    top: 1rem;
+    outline: 3px solid #fff;
+    outline-offset: 2px;
   }
 
   /* Page transition animations (varied, premium, GPU-accelerated) */

@@ -103,9 +103,10 @@ export default function AreaDetail() {
         <FadeIn>
           <Link
             to="/#areas"
-            className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors mb-12"
+            aria-label="Voltar para a seção Áreas de Atuação na página inicial"
+            className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors mb-12 focus-visible:ring-2 focus-visible:ring-primary rounded p-1"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" /> Voltar para Áreas de Atuação
+            <ArrowLeft className="w-4 h-4 mr-2" aria-hidden="true" /> Voltar para Áreas de Atuação
           </Link>
         </FadeIn>
 
@@ -113,10 +114,16 @@ export default function AreaDetail() {
           <div className="lg:col-span-2">
             <FadeIn delay={100}>
               <div className="flex items-center gap-6 mb-8">
-                <div className="w-20 h-20 bg-card border border-border flex items-center justify-center shrink-0">
+                <div
+                  className="w-20 h-20 bg-card border border-border flex items-center justify-center shrink-0"
+                  aria-hidden="true"
+                >
                   <Icon className="w-10 h-10 text-primary" strokeWidth={1} />
                 </div>
-                <h1 className="text-4xl md:text-6xl font-serif font-bold text-foreground leading-tight">
+                <h1
+                  className="text-4xl md:text-6xl font-serif font-bold text-foreground leading-tight"
+                  tabIndex={-1}
+                >
                   {area.title}
                 </h1>
               </div>
@@ -416,7 +423,7 @@ export default function AreaDetail() {
                                     <span className="text-4xl md:text-5xl font-serif font-bold text-white tracking-tight mb-2">
                                       {item.percent}
                                     </span>
-                                    <span className="text-sm md:text-base text-muted-foreground font-medium uppercase tracking-wider">
+                                    <span className="text-sm md:text-base text-foreground/90 font-medium uppercase tracking-wider">
                                       {item.label}
                                     </span>
                                   </div>
@@ -461,10 +468,14 @@ export default function AreaDetail() {
                       <li key={a.id}>
                         <Link
                           to={`/areas/${a.slug}`}
-                          className="flex items-center justify-between text-muted-foreground hover:text-primary group transition-colors"
+                          aria-label={`Ver área de atuação: ${a.title}`}
+                          className="flex items-center justify-between text-muted-foreground hover:text-primary group transition-colors focus-visible:ring-2 focus-visible:ring-primary rounded p-1"
                         >
                           <span>{a.title}</span>
-                          <ChevronRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                          <ChevronRight
+                            className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+                            aria-hidden="true"
+                          />
                         </Link>
                       </li>
                     ))}
@@ -477,7 +488,7 @@ export default function AreaDetail() {
                   </p>
                   <Button
                     asChild
-                    className="w-full bg-primary text-white hover:bg-primary/90 rounded-none flex items-center justify-center gap-2"
+                    className="w-full bg-primary text-black font-semibold hover:bg-primary/90 rounded-none flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-primary"
                   >
                     <a
                       href={`https://wa.me/5511933293331?text=${encodeURIComponent(
@@ -485,8 +496,9 @@ export default function AreaDetail() {
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`Falar pelo WhatsApp sobre ${area.title} (abre em nova janela)`}
                     >
-                      <MessageCircle className="w-4 h-4" />
+                      <MessageCircle className="w-4 h-4" aria-hidden="true" />
                       Fale pelo WhatsApp
                     </a>
                   </Button>

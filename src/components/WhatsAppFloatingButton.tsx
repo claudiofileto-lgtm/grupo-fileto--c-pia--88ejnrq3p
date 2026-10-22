@@ -9,14 +9,15 @@ export function WhatsAppFloatingButton() {
   return (
     <aside
       aria-label="Atendimento via WhatsApp"
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-2 group"
+      className="fixed bottom-6 right-6 z-50 flex items-center gap-2 group pointer-events-auto"
     >
       {/* Tooltip / Label ao lado */}
       <div
-        className="pointer-events-none hidden sm:inline-flex items-center bg-card/95 backdrop-blur-sm text-primary border border-border px-3 py-1.5 rounded-full text-xs font-medium shadow-md opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+        id="whatsapp-tooltip"
+        className="pointer-events-none hidden sm:inline-flex items-center bg-card/95 backdrop-blur-sm text-primary border border-border px-3 py-1.5 rounded-full text-xs font-medium shadow-md opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 group-focus-within:opacity-100 group-focus-within:translate-x-0 transition-all duration-300"
         role="tooltip"
       >
-        <span>Fale conosco</span>
+        <span>Fale conosco pelo WhatsApp</span>
       </div>
 
       {/* Botão flutuante circular - tom escuro representativo do dourado escovado da logomarca */}
@@ -24,11 +25,16 @@ export function WhatsAppFloatingButton() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Fale conosco pelo WhatsApp"
+        aria-label="Fale conosco pelo WhatsApp (abre em nova janela)"
+        aria-describedby="whatsapp-tooltip"
         style={{ backgroundColor: BRAND_GOLD.buttonDark }}
-        className="w-14 h-14 rounded-full text-white shadow-lg hover:shadow-xl hover:brightness-105 transition-all duration-300 hover:scale-110 flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ad8942] focus-visible:ring-offset-2"
+        className="w-14 h-14 rounded-full text-white shadow-lg hover:shadow-xl hover:brightness-105 transition-all duration-300 hover:scale-110 flex items-center justify-center focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       >
-        <MessageCircle className="w-7 h-7 text-white fill-white/20" strokeWidth={2} />
+        <MessageCircle
+          className="w-7 h-7 text-white fill-white/20"
+          strokeWidth={2}
+          aria-hidden="true"
+        />
       </a>
     </aside>
   )

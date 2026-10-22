@@ -52,10 +52,17 @@ export function Hero() {
           <FadeIn delay={700}>
             <Button
               size="lg"
-              className="bg-transparent border border-primary text-primary hover:bg-primary hover:text-white rounded-none px-8 py-6 text-base tracking-wide transition-all duration-300 shadow-[0_0_0_0_rgba(197,161,89,0)] hover:shadow-glow"
-              onClick={() =>
-                document.getElementById('escritorio')?.scrollIntoView({ behavior: 'smooth' })
-              }
+              className="bg-transparent border border-primary text-primary hover:bg-primary hover:text-white rounded-none px-8 py-6 text-base tracking-wide transition-all duration-300 shadow-[0_0_0_0_rgba(197,161,89,0)] hover:shadow-glow focus-visible:ring-2 focus-visible:ring-primary"
+              onClick={() => {
+                const target = document.getElementById('escritorio')
+                target?.scrollIntoView({ behavior: 'smooth' })
+                if (target instanceof HTMLElement) {
+                  if (!target.hasAttribute('tabindex')) {
+                    target.setAttribute('tabindex', '-1')
+                  }
+                  target.focus({ preventScroll: true })
+                }
+              }}
             >
               Conheça o Escritório
             </Button>

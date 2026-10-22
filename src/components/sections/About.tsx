@@ -2,21 +2,28 @@ import { FadeIn } from '../FadeIn'
 
 export function About() {
   return (
-    <section id="escritorio" className="py-24 md:py-32 bg-background relative">
+    <section
+      id="escritorio"
+      className="py-24 md:py-32 bg-background relative"
+      aria-labelledby="about-heading"
+    >
       <div className="container mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <FadeIn direction="right">
             <div className="flex flex-col">
               <div className="relative mb-12 md:mb-16">
-                <div className="absolute -inset-4 border border-primary/20 translate-x-4 translate-y-4 pointer-events-none" />
+                <div
+                  className="absolute -inset-4 border border-primary/20 translate-x-4 translate-y-4 pointer-events-none"
+                  aria-hidden="true"
+                />
                 <img
                   src="https://img.usecurling.com/p/800/1000?q=modern%20corporate%20office%20interior&color=black"
-                  alt="Interior do Escritório"
+                  alt="Instalações modernas e acolhedoras do escritório corporativo do Grupo Fileto"
                   className="w-full h-auto object-cover relative z-10 filter grayscale-[20%]"
                 />
                 <div className="absolute bottom-0 right-0 bg-card p-6 md:p-8 z-20 shadow-2xl border-l border-t border-primary/30 transform translate-x-4 md:translate-x-12 translate-y-4 md:translate-y-12">
                   <p className="font-serif text-3xl md:text-5xl text-primary font-bold mb-2">32+</p>
-                  <p className="text-sm md:text-base text-muted-foreground uppercase tracking-wider">
+                  <p className="text-sm md:text-base text-muted-foreground uppercase tracking-wider font-semibold">
                     Anos de Experiência
                   </p>
                 </div>
@@ -24,7 +31,7 @@ export function About() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 border-t border-border pt-8 mt-2">
                 <div>
-                  <h4 className="font-serif text-white text-xl mb-2">Missão</h4>
+                  <h3 className="font-serif text-white text-xl mb-2">Missão</h3>
                   <p className="text-sm text-muted-foreground text-justify">
                     Proteger e impulsionar os negócios de nossos clientes com redução de custos e
                     ampliação de margens, através da nossa expertise e de nossos parceiros, com
@@ -32,7 +39,7 @@ export function About() {
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-serif text-white text-xl mb-2">Valores</h4>
+                  <h3 className="font-serif text-white text-xl mb-2">Valores</h3>
                   <p className="text-sm text-muted-foreground text-justify">
                     Ética inegociável, sofisticação técnica, atualização constante e dedicação
                     absoluta aos interesses dos nossos clientes.
@@ -45,15 +52,18 @@ export function About() {
           <FadeIn direction="left" delay={200}>
             <div className="lg:pl-8 mt-8 lg:mt-0">
               <div className="flex items-center gap-4 mb-6">
-                <div className="h-[1px] w-12 bg-primary"></div>
-                <h2 className="text-primary uppercase tracking-widest text-sm font-semibold">
+                <div className="h-[1px] w-12 bg-primary" aria-hidden="true"></div>
+                <span className="text-primary uppercase tracking-widest text-sm font-semibold">
                   O Escritório
-                </h2>
+                </span>
               </div>
-              <h3 className="text-4xl md:text-5xl font-serif font-bold mb-8 leading-tight">
+              <h2
+                id="about-heading"
+                className="text-4xl md:text-5xl font-serif font-bold mb-8 leading-tight"
+              >
                 Experiência, Precisão e <br />
                 <span className="text-muted-foreground italic font-normal">Comprometimento</span>
-              </h3>
+              </h2>
               <div className="space-y-6 text-muted-foreground leading-relaxed text-justify">
                 <p className="text-justify">
                   Nosso CEO, CLAUDIO FILETO, advogado desde 1991, com duas especializações em
